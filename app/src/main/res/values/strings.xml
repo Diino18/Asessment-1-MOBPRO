@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Converter Shoes</string>
+    <string name="size_indo">Size Indonesia</string>
+    <string name="size_us">Size US</string>
+    <string name="size_uk">Size UK</string>
+    <string name="convert_size">Convert size</string>
+    <string name="input_invalid">Tidak boleh kosong</string>
+    <string name="result">Result : %1$d</string>
+    <string name="kembali">Kembali</string>
+    <string name="tentang_aplikasi">Tentang Aplikasi</string>
+    <string name="deskripsi_profile">Hi, nama saya Tegar Ramadhan, saya berkuliah di Telkom University, Dan saya Jurusan D3 Rekayasa Perangkat Lunak Aplikasi.</string>
+    <string name="copyright"> Converter Shoe adalah aplikasi untuk mengkonversi ukuran sepatu dari indonesia ke ukuran Amerika (US) United Kingdom (UK), sehingga seseorang
+    dapat mengetahui apakah ukuran sepatunya saat berbelanja di luar negri ataupun online.\n\nAplikasi ini dibuat untuk asessment1 mobpro.\n\nCopyright © 2021 - 2024
+    Tegar Ramadhan.\nAll rights reserved.</string>
+
+
+
+
+</resources>
