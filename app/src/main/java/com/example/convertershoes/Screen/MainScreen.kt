@@ -1,5 +1,7 @@
 package com.example.convertershoes.Screen
 
+import android.content.Context
+import android.content.Intent
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -38,6 +40,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.input.ImeAction
@@ -84,6 +87,7 @@ fun MainScreen(navController: NavHostController) {
 
 @Composable
 fun ScreenContent(modifier: Modifier) {
+    val context = LocalContext.current
     var SizeIndo by remember {
         mutableStateOf("")
     }
@@ -162,6 +166,7 @@ fun ScreenContent(modifier: Modifier) {
             Text(text = stringResource(id = R.string.convert_size))
         }
         if (kondisi == true ) {
+            Text(text = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
             Divider(
                 modifier = Modifier.padding(vertical = 8.dp),
                 thickness = 1.dp
@@ -170,9 +175,32 @@ fun ScreenContent(modifier: Modifier) {
                 text = stringResource(id = R.string.result, hasilConvert ),
                 style = MaterialTheme.typography.titleLarge
             )
+            Button(
+                onClick = {
+                    shareData(
+                        context = context,
+                        message = context.getString(R.string.bagikan_template,
+                            hasilConvert)
+
+                    )
+                },
+                modifier = Modifier.padding(top = 8.dp),
+                contentPadding = PaddingValues(horizontal = 32.dp, vertical = 16.dp)
+            ) {
+                Text(text = stringResource(id = R.string.bagikan))
+            }
         }
 
 
+    }
+}
+private fun shareData(context: Context, message: String){
+    val shareIntent = Intent(Intent.ACTION_SEND).apply {
+        type = "text/plain"
+        putExtra(Intent.EXTRA_TEXT, message)
+    }
+    if (shareIntent.resolveActivity(context.packageManager) != null){
+        context.startActivity(shareIntent)
     }
 }
 @Composable
