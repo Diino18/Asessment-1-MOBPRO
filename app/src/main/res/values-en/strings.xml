@@ -13,4 +13,5 @@
     <string name="deskripsi_profile">Hi, my name is Tegar Ramadhan, I study at Telkom University, and I major in D3 Application Software Engineering.</string>
     <string name="copyright">Converter Shoe is an application for converting shoe sizes from Indonesian to American (US) United Kingdom (UK) sizes, so that someone     You can find out what your shoe size is when shopping abroad or online.  This application was created for mobpro assessment1.  Copyright © 2021 - 2024     Tegar Ramadhan. All rights reserved.</string>
     <string name="bagikan">Share</string>
+    <string name="size_invalid">Size Cannot Be Less Than 40</string>
 </resources>

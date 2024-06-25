@@ -108,6 +108,9 @@ fun ScreenContent(modifier: Modifier) {
     var hasilConvert by remember {
         mutableStateOf(0)
     }
+    var SizeError by remember {
+        mutableStateOf(false)
+    }
     Column(modifier = modifier
         .fillMaxSize()
         .verticalScroll(rememberScrollState())
@@ -124,8 +127,8 @@ fun ScreenContent(modifier: Modifier) {
             value = SizeIndo,
             onValueChange = {SizeIndo = it},
             label = { Text(text = stringResource(id = R.string.size_indo)) },isError = SizeIndoError,
-            trailingIcon = { IconPicker(SizeIndoError, "") },
-            supportingText = { ErrorHint(isError = SizeIndoError )},
+            trailingIcon = { IconPicker(SizeIndoError, "", SizeError) },
+            supportingText = { ErrorHint(isError = SizeIndoError , SizeError )},
             singleLine = true,
             keyboardOptions = KeyboardOptions(
                 keyboardType = KeyboardType.Number,
@@ -157,6 +160,8 @@ fun ScreenContent(modifier: Modifier) {
             onClick = {
                 SizeIndoError = (SizeIndo == "")
                 if (SizeIndoError) return@Button
+                SizeError = SizeIndo.toInt() < 40
+                if (SizeError) return@Button
                 kondisi = true
                 hasilConvert = ConverterSize(SizeIndo.toInt(), convertType == radioOptions[0] )
             },
@@ -204,18 +209,27 @@ private fun shareData(context: Context, message: String){
     }
 }
 @Composable
-fun IconPicker(isError: Boolean, unit: String) {
+fun IconPicker(isError: Boolean, unit: String , SizeError: Boolean) {
     if (isError) {
         Icon(imageVector = Icons.Filled.Warning, contentDescription = null)
-    } else {
+    } else if (
+        SizeError
+    ){
+        Icon(imageVector = Icons.Filled.Warning, contentDescription = null)
+    }
+    else {
         Text(text = unit)
     }
 }
 
 @Composable
-fun ErrorHint(isError: Boolean) {
+fun ErrorHint(isError: Boolean, SizeError : Boolean) {
     if (isError) {
         Text(text = stringResource(id = R.string.input_invalid))
+    }
+    else if (SizeError){
+        Text(text = stringResource(id = R.string.size_invalid))
+
     }
 }
 @Composable
